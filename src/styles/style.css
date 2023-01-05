@@ -12,16 +12,20 @@
   --color-blue: #1085c5;
   --font-size-title-large: 72px;
   --font-size-title-medium: 60px;
-  --font-size-title-small: 34px;
+  --font-size-title-small: 52px;
+  --font-size-title-smaller: 34px;
+  --font-size-integer-title: 64px;
   --line-height-title: 1.2em;
+  --line-height-integer-title: 1;
   --font-color-main: #2a2626;
-  --primary-font: neucha, arial, sans-serif;
+  --font-title: neucha, arial, sans-serif;
 
   /* переменные, связанные с основным текстом */
   --font-main-text: "Open Sans", arial, sans-serif;
   --font-size-main-text: 16px;
   --line-height-main-text: 1.6em;
   --main-text-margin: 7px;
+  --main-text-example-margin: 15px;
 }
 
 * {
@@ -34,13 +38,9 @@
 
   min-height: 100vh;
 
+  margin: 0 auto;
+
   color: var(--font-color-main);
-
-  font-size: var(--font-size-normal);
-
-  font-family: var(--primary-font);
-
-  line-height: var(--line-height-content);
 }
 
 .page-main-content {
@@ -48,22 +48,36 @@
 }
 
 [class*="title"] {
+  margin: 0;
+  padding: 0;
+
+  color: var(--font-color-main);
+
+  font-weight: normal;
+  font-family: var(--font-title);
+
   line-height: var(--line-height-title);
 }
 
 .title-large {
-  font-weight: normal;
   font-size: var(--font-size-title-large);
 }
 
 .title-medium {
-  font-weight: normal;
   font-size: var(--font-size-title-medium);
 }
 
 .title-small {
-  font-weight: normal;
   font-size: var(--font-size-title-small);
+}
+
+.title-smaller {
+  font-size: var(--font-size-title-smaller);
+}
+
+.title-integer {
+  font-size: var(--font-size-integer-title);
+  line-height: var(--line-height-integer-title);
 }
 
 .button {
@@ -76,10 +90,6 @@
   text-decoration: none;
 
   background-color: var(--color-primary);
-}
-
-.font-primary-color {
-  color: var(--color-primary);
 }
 
 .container {
@@ -128,23 +138,8 @@
   background-color: var(--color-brown);
 }
 
-.example-header {
-  display: flex;
-  padding: 100px 0;
-}
-
-.example-header-reversed {
-  flex-direction: row-reverse;
-}
-
-.example-image {
-  display: block;
-}
-
-.example-definition::before {
-  font-size: 24px;
-
-  content: "Когнитивные искажения";
+.primary-dark-background {
+  background-color: var(--color-primary-dark);
 }
 
 /*  колонки с основным текстом   */
@@ -167,55 +162,129 @@
   margin-bottom: var(--main-text-margin);
 }
 
+.example-columns .fragment {
+  margin: 0;
+  margin-bottom: var(--main-text-example-margin);
+}
+
 .fragment:last-child {
   margin-bottom: 0;
 }
 
-/*  псевдоэлемент Как проявляется
+/* секция example */
 
-.example-cols::before {
+.example-header {
+  display: flex;
+  padding-bottom: 100px;
+}
+
+.example-header-reversed {
+  flex-direction: row-reverse;
+}
+
+.example-image {
   display: block;
-  margin-bottom: 20px;
+}
+
+.example-definition {
+  margin: 0;
+  padding-left: 30px;
+}
+
+.brown-background .example-definition * {
+  color: var(--color-white);
+}
+
+.example-definition .title-medium {
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.example-definition .title-smaller {
+  margin: 0;
+}
+
+.example-definition::before {
+  font-size: 24px;
+
+  font-family: var(--font-title);
+  line-height: var(--line-height-title);
+
+  content: "Когнитивные искажения";
+}
+
+/* установка цвета для псевдоэлементов */
+.example.light-background {
+  color: var(--color-dark-50);
+}
+
+.example.brown-background {
+  color: var(--color-white-50);
+}
+
+.example-columns {
+  position: relative;
+
+  padding-top: 46px;
+
+  line-height: 1.56;
+}
+
+.light-background .example-columns {
+  color: var(--color-dark);
+}
+
+.brown-background .example-columns {
+  color: var(--color-white);
+}
+
+.example-columns::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 26px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   padding-left: 10px;
 
-  column-span: all;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: var(--font-main-text);
+  line-height: var(--line-height-title);
+  text-transform: uppercase;
 
   content: "Как проявляется";
 }
 
-.example-col {
-  margin: 0;
-}
-
-*/
-
-/* настройка шрифтов
-
-.column.secondary-font {
-  font-family: var(--secondary-font);
-  line-height: var(--line-height-content);
-}
-
-.example-cols.secondary-font::before {
+.light-background .example-columns::before {
   color: var(--color-white);
-
-  font-weight: bold;
-  font-size: 14px;
-
-  font-family: var(--secondary-font);
 
   background-color: var(--color-brown);
 }
 
-.brown-background .example-cols.secondary-font::before {
+.brown-background .example-columns::before {
   color: var(--color-brown);
 
   background-color: var(--color-white);
 }
 
-.brown-background .example-col.secondary-font {
+/* настройка шрифтов */
+
+.font-primary-color {
+  color: var(--color-primary);
+}
+
+.font-white-color {
   color: var(--color-white);
-} */
+}
+
+.font-primary-dark-color {
+  color: var(--color-primary-dark);
+}
 
 .main-text {
   font-size: var(--font-size-main-text);
@@ -235,6 +304,8 @@
 
 .header {
   position: relative;
+
+  overflow-x: hidden;
 }
 
 .header-image {
@@ -267,13 +338,12 @@
 .video-section {
   position: relative;
 
-  padding-bottom: 475px;
-
-  border-bottom: 110px solid var(--color-primary-dark);
+  padding-bottom: 476px;
 }
 
 .video-section-title {
   margin: 0;
+  padding-top: 1px;
 
   text-align: center;
 }
@@ -290,4 +360,80 @@
   margin: 0 auto;
 
   padding: 0 95.5px;
+}
+
+.video {
+  filter: drop-shadow(0 16px 32px rgba(0 0 0 / 15%));
+}
+
+/* секция с навигацией */
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin: 0;
+  margin-top: 100px;
+  padding: 0;
+}
+
+.nav-item {
+  position: relative;
+
+  width: 350px;
+
+  padding: 24px;
+
+  list-style-type: none;
+}
+
+.nav-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+.nav-title {
+  padding: 0;
+}
+
+.nav-item:nth-child(3n) {
+  margin-right: 0;
+}
+
+.nav-item-title-integer {
+  margin-bottom: 40px;
+}
+
+.nav-item-title {
+  margin-bottom: 16px;
+}
+
+.nav-item:hover:not(.nav-title) {
+  background-color: var(--color-primary);
+}
+
+.nav-item:hover:not(.nav-title) * {
+  color: var(--color-white);
+}
+
+[class*="nav-row"] {
+  margin: 0 30px 20px 0;
+}
+
+.nav-row-first {
+  height: 323px;
+}
+
+.nav-row-second {
+  height: 348px;
+  margin-bottom: 0;
+}
+
+.nav-item-row-description {
+  margin: 0;
 }
