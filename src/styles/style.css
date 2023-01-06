@@ -5,6 +5,7 @@
   --color-white-50: #d7ccc0;
   --color-light: #f5f4f0;
   --color-primary: #fe8a02;
+  --color-primary-hover: #ea7600;
   --color-primary-dark: #42413c;
   --color-dark: #2a2626;
   --color-dark-50: #908d8b;
@@ -30,6 +31,10 @@
 
 * {
   box-sizing: border-box;
+}
+
+a:link {
+  color: var(--color-blue);
 }
 
 .page-content {
@@ -90,6 +95,11 @@
   text-decoration: none;
 
   background-color: var(--color-primary);
+}
+
+.button:hover {
+  background-color: var(--color-primary-hover);
+  cursor: pointer;
 }
 
 .container {
@@ -436,4 +446,123 @@
 
 .nav-item-row-description {
   margin: 0;
+}
+
+/* секция с формой подписки */
+
+.footer {
+  padding-bottom: 111px;
+}
+
+.subscribe-form {
+  display: flex;
+  align-items: center;
+
+  height: 190px;
+
+  padding: 55px;
+}
+
+.form-title {
+  width: 540px;
+  margin-right: 30px;
+}
+
+.input-container {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input-title {
+  position: relative;
+  top: -12px;
+
+  height: 28px;
+
+  font-size: 18px;
+}
+
+.email {
+  position: relative;
+  bottom: 10px;
+
+  display: flex;
+}
+
+.form-input {
+  display: block;
+
+  width: 415px;
+  height: 50px;
+
+  padding: 15px;
+
+  font-size: 13.1px;
+
+  border: 0;
+}
+
+.form-input::placeholder {
+  color: #757575;
+}
+
+.submit-button {
+  width: 70px;
+  height: 50px;
+
+  padding: 0;
+
+  border: 0;
+}
+
+.submit-button::before {
+  display: block;
+
+  width: 24px;
+  height: 24px;
+
+  margin: 0 auto;
+
+  background-image: url("../images/send.svg");
+
+  content: "";
+}
+
+.service-rules {
+  position: absolute;
+  bottom: -15px;
+
+  display: block;
+
+  height: 25px;
+
+  margin: 0;
+  padding-top: 5px;
+
+  font-size: 12px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 76px;
+}
+
+.page-author,
+.writer-link,
+.hexlet-link {
+  margin: 0;
+  margin-bottom: 16px;
+
+  font-size: 14px;
+
+  vertical-align: middle;
+}
+
+.hexlet-link {
+  margin-bottom: 0;
 }
